@@ -4,7 +4,7 @@ import AppReducer from './AppReducer';
 require('dotenv').config();
 
 // axios
-const baseContentURL = 'https://api.nba.net/2';
+const baseContentURL = 'http://api.nba.net/2';
 
 const baseStatsURL = 'http://data.nba.com/data/10s/v2015/json/mobile_teams';
 

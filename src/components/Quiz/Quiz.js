@@ -93,10 +93,17 @@ export const Quiz = ({ setTimeLeft, timeLeft }) => {
 if (showInfo && currentQuestion === 1) {
   return (
     <div className='info-container'>
-      <div className='text-container'>
+      <motion.div 
+        className='text-container'        
+        initial='out'
+        animate='in'
+        exit='out'
+        variants={textVariants}
+        transition={imgTransition} 
+      >
         <h1>Did you know...</h1>
         <h2>{teamPointsLeader.fn} {teamPointsLeader.ln} currently averages {teamPointsLeader.pts} points per game!</h2>
-      </div>
+      </motion.div>
       <motion.img               
         initial='out'
         animate='in'
@@ -111,10 +118,16 @@ if (showInfo && currentQuestion === 1) {
 else if (showInfo && currentQuestion === 2) {
   return (
     <div className='info-container'>
-      <div className='text-container' > 
+      <motion.div className='text-container'        
+        initial='out'
+        animate='in'
+        exit='out'
+        variants={textVariants}
+        transition={imgTransition}  
+      > 
         <h1>Did you know...</h1>
         <h2>The Timberwolves are currently {standings} in the last ten games.</h2>
-      </div>
+      </motion.div>
       <motion.img               
         initial='out'
         animate='in'
@@ -130,10 +143,17 @@ else if (showInfo && currentQuestion === 2) {
 else if (showInfo && currentQuestion === 3) {
   return (
     <div className='info-container'>
-      <div className='text-container'>      
+      <motion.div 
+        className='text-container'        
+        initial='out'
+        animate='in'
+        exit='out'
+        variants={textVariants}
+        transition={imgTransition} 
+      >      
         <h1>Did you know...</h1>
         <h2>{allTimeLeader.fn} {allTimeLeader.ln} is ranked in the top 20 all-time players for his {allTimeLeader.gp} career steals!</h2>
-      </div>
+      </motion.div>
       <motion.img               
         initial='out'
         animate='in'
@@ -161,10 +181,17 @@ else if (showInfo && currentQuestion === 4) {
   } 
   return (
     <div className='info-container'>
-      <div className='text-container'> 
+      <motion.div 
+        className='text-container'        
+        initial='out'
+        animate='in'
+        exit='out'
+        variants={textVariants}
+        transition={imgTransition} 
+      > 
         <h1>Did you know...</h1>
         <h2>{teamAssistsLeader.fn} {teamAssistsLeader.ln} averages {teamAssistsLeader.val} assists per game in his position as a Timberwolves {teamAssistsLeader.pos}!</h2>
-      </div>
+      </motion.div>
       <motion.img               
         initial='out'
         animate='in'

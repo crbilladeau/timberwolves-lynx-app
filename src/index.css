@@ -20,6 +20,7 @@
   src: local('Futura Medium Bk'), url('./fonts/futuraMedium.ttf') format('ttf'),
     url('./fonts/futuraMedium.woff') format('woff');
 }
+
 /* 
 .app {
   display: flex;

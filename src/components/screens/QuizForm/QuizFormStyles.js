@@ -1,12 +1,12 @@
 
 import styled from 'styled-components';
 
-export const QuizContainer = styled.div`
+export const QuizFormContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-	margin: 20px auto;
+	margin: 0 auto;
   padding: 60px;
 	border-radius: 5px;
 	background-color: var(--timberBlue);
@@ -23,6 +23,24 @@ export const QuizHeader = styled.div`
   margin-bottom: 60px;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   border-radius: 5px;
+
+  h2 {
+    color: #ffffff;
+    font-family: 'Futura Medium Bk', sans-serif;
+    font-size: 36px;
+    font-weight: 400;
+    text-align: center;
+    line-height: 42px;
+    margin-bottom: 30px;
+  }
+  h3 {
+    color: #ffffff;
+    font-family: 'Futura Medium Bk', sans-serif;
+    font-size: 32px;
+    font-weight: 400;
+    text-align: center;
+    line-height: 42px;
+  }
 `;
 
 export const AnswerContainer = styled.div`

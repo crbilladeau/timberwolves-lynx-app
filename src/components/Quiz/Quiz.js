@@ -102,7 +102,7 @@ if (showInfo && currentQuestion === 1) {
         transition={imgTransition} 
       >
         <h1>Did you know...</h1>
-        <h2>{teamPointsLeader.fn} {teamPointsLeader.ln} currently averages {teamPointsLeader.pts} points per game!</h2>
+        <h2>{teamPointsLeader.fn} {teamPointsLeader.ln} currently averages {topFourPointsPlayers[0]['pts']} points per game!</h2>
       </motion.div>
       <motion.img               
         initial='out'

@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { GlobalContext } from '../../../context/GlobalState';
 import { Trivia } from '../Trivia/Trivia';
 import { Container, Row, StartButton, PlayerImage, Brush, SquareNavy, SquareGreen } from '../Main/MainStyles';
 
@@ -7,11 +8,15 @@ import katBig from '../../../images/kat-wolves.png';
 
 export const Main = () => {
   const [gameStart, setGameStart] = useState(false);
+  const { state } = useContext(GlobalContext);
+  const { loading } = state;
 
   const beginGame = () => {
     setGameStart(true);
   }
-
+  if (loading) {
+    <h2>Loading...</h2>
+  }
   return (
     gameStart ? <Trivia /> :
     <Container>

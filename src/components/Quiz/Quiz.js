@@ -1,6 +1,5 @@
 import React, { useContext, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import styled from 'styled-components';
 import { GlobalContext } from '../../context/GlobalState';
 import { QuizContainer, QuizHeader, AnswerContainer } from './QuizStyles';
 import { Question } from '../Question/Question';

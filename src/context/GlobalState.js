@@ -81,7 +81,7 @@ const initialState = {
   answered: false,
   showInfo: false,
   showResults: false,
-  loading: false,
+  loading: true,
   error: '',
 }
 
@@ -168,7 +168,7 @@ async function getStandings() {
         type: 'GET_TIMB_STANDINGS',
         payload: response[0]['data']['sta']['co'][1]['di'][0]['t'][4]['l10']
       });
-      console.log(response[0]['data']['sta']['co'][1]['di'][0]['t'][4]);
+      // console.log(response[0]['data']['sta']['co'][1]['di'][0]['t'][4]);
       dispatch({
         type: 'GET_TEAM_IMG',
         payload: response[1]['data']['response']['result'][0]

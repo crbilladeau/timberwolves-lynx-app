@@ -6,11 +6,11 @@ export default (state, action) => {
         ...state,
         players: action.payload
       }
-      case 'SET_TOP_FOUR_POINTS_PLAYERS':
-        return {
-          ...state,
-          topFourPointsPlayers: action.topFourPointsPlayers
-        }
+    case 'SET_TOP_FOUR_POINTS_PLAYERS':
+      return {
+        ...state,
+        topFourPointsPlayers: action.topFourPointsPlayers
+      }
     case 'GET_TEAM_POINTS_LEADER':
       return {
         ...state,
@@ -44,7 +44,8 @@ export default (state, action) => {
     case 'GET_ALL_TIME_LEADER':
       return {
         ...state,
-        allTimeLeader: action.payload
+        allTimeLeader: action.payload,
+        loading: false
       }
     case 'GET_ALL_TIME_LEADER_IMG':
       return {

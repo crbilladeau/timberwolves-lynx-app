@@ -4,7 +4,7 @@ import { GlobalContext } from '../../context/GlobalState';
 export const Option = (props) => {
   let classes = ['answer'];
 
-  const { state, dispatch } = useContext(GlobalContext);
+  const { state } = useContext(GlobalContext);
   const { questions, currentQuestion } = state;
   const question = questions[currentQuestion];
 

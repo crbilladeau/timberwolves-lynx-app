@@ -1,24 +1,29 @@
 @font-face {
   font-family: 'Edo SZ';
-  src: local('Edo SZ'), url('./fonts/edosz.ttf') format('ttf');
+  src: local('Edo SZ'), url('./fonts/edosz.ttf') format('ttf'),
+    url('./fonts/edosz.woff') format('woff'),
+    url('./fonts/edosz.woff2') format('woff2');
 }
 
 @font-face {
   font-family: 'Futura Book';
   src: local('Futura Book'), url('./fonts/futuraBook.ttf') format('ttf'),
-    url('./fonts/futuraBook.woff') format('woff');
+    url('./fonts/futuraBook.woff') format('woff'),
+    url('./fonts/futuraBook.woff2') format('woff2');
 }
 
 @font-face {
   font-family: 'Futura Light Bk';
   src: local('Futura Light Bk'), url('./fonts/futuraLight.ttf') format('ttf'),
-    url('./fonts/futuraLight.woff') format('woff');
+    url('./fonts/futuraLight.woff') format('woff'),
+    url('./fonts/futuraLight.woff2') format('woff2');
 }
 
 @font-face {
   font-family: 'Futura Medium Bk';
   src: local('Futura Medium Bk'), url('./fonts/futuraMedium.ttf') format('ttf'),
-    url('./fonts/futuraMedium.woff') format('woff');
+    url('./fonts/futuraMedium.woff') format('woff'),
+    url('./fonts/futuraMedium.woff2') format('woff2');
 }
 
 /* 

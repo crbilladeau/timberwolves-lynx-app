@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { motion } from 'framer-motion';
 import { GlobalContext } from '../../context/GlobalState';
 import { QuizContainer, QuizHeader, AnswerContainer } from './QuizStyles';
@@ -68,7 +68,7 @@ export const Quiz = ({ setTimeLeft, timeLeft }) => {
       setTimeout(() => {
         dispatch({type: 'SET_SHOW_INFO', showInfo: false });
         setTimeLeft(10);
-      }, 2000)
+      }, 5000)
     } 
     if (currentQuestion + 1 < questions.length) {
       dispatch({

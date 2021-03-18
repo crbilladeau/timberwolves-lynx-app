@@ -16,18 +16,23 @@ let options = {
 
 // initial state
 const initialState = {
-  correct_answer: '',
-  players: {},
   topFourPointsPlayers: {},
-  teamPointsLeader: {},
-  teamPointsLeaderImg: '',
+  teamPointsLeader: {
+    name: '',
+    points: 0,
+    position: ''
+  },
+  teamAssistsLeader: {
+    name: '',
+    assists: 0,
+    position: ''
+  },
   standings: '',
   teamImg: '',
+  teamPointsLeaderImg: '',
   allTimeLeader: {},
   allTimeLeaderImg: '',
-  teamAssistsLeader: {},
   teamAssistsLeaderImg: '',
-  playerInfo: {},
   questions: [
     {
       id: 1,
@@ -35,44 +40,44 @@ const initialState = {
       answer_a: 'Ricky Rubio',
       answer_b: "D'Angelo Russell",
       answer_c: 'Jordan McLaughlin',
-      answer_d: 'Karl-Anthony Towns',
-      correct_answer: 'd',
+      answer_d: '',
+      correct_answer: '',
     },
     {
       id: 2,
-      question: "What is the Timberwolves current win-loss record?",
+      question: "What is the Timberwolves current win-loss conference record?",
       answer_a: '12 - 26',
-      answer_b: '9 - 30',
+      answer_b: '',
       answer_c: '28 - 10',
       answer_d: '10 - 18',
-      correct_answer: 'b',
+      correct_answer: '',
     },
     {
       id: 3,
       question: "Which former Timberwolves player holds the team's all-time career record for steals?",
-      answer_a: 'Kevin Garnett',
+      answer_a: '',
       answer_b: "Wally Szczerbiak",
       answer_c: 'Kevin Love',
       answer_d: 'Tom Gugliotta',
-      correct_answer: 'a',
+      correct_answer: '',
     },
     {
       id: 4,
       question: 'Which Timberwolves player currently has the most assists per game?',
-      answer_a: 'Ricky Rubio',
+      answer_a: '',
       answer_b: "D'Angelo Russell",
       answer_c: 'Jordan McLaughlin',
       answer_d: 'Karl-Anthony Towns',
-      correct_answer: 'a',
+      correct_answer: ''
     },
     {
       id: 5,
       question: 'What position does Anthony Edwards play?',
       answer_a: 'G-F',
       answer_b: "C-F",
-      answer_c: 'G',
+      answer_c: '',
       answer_d: 'F',
-      correct_answer: 'c',
+      correct_answer: '',
     },
   ],
   currentQuestion: 0,
@@ -93,17 +98,16 @@ export const GlobalProvider = ({ children }) => {
   const [state, dispatch] = useReducer(AppReducer, initialState);
 
 // API specific actions
-async function getPlayerAverages() {
+async function getPlayerInfo() {
   try {
     const response = await axios.get(
-        `${baseStatsURL}/nba/2020/teams/timberwolves/player_averages_02.json`
+        `${baseStatsURL}/nba/2020/players/playercard_1630162_02.json`
       ).then((response) => {
-        // console.log(response);
         dispatch({
-          type: 'GET_PLAYERS',
-          payload: response.data.tpsts.pl
+          type: 'GET_EDWARDS_INFO',
+          payload: response.data.pl.pos
         })
-        // console.log(response.data.tpsts.pl);
+        console.log(response.data.pl.pos);
       });
   } catch (err) {
     dispatch({
@@ -131,11 +135,12 @@ async function getTeamLeaders() {
           type: 'GET_TEAM_POINTS_LEADER',
           payload: response[0]['data']['tle']['pts']
         });
-        // console.log(response[0]['data']['tle']['pts'])
+        // console.log(`${response[0]['data']['tle']['pts']['fn']} ${response[0]['data']['tle']['pts']['ln']}`)
         dispatch({
           type: 'GET_TEAM_ASSISTS_LEADER',
           payload: response[0]['data']['tle']['ast']
         });
+        // console.log(response[0]['data']['tle']['ast'])
         dispatch({
           type: 'GET_TEAM_POINTS_LEADER_IMG',
           payload: response[1]['data']['response']['result'][0]['listImage']['landscape']
@@ -166,7 +171,7 @@ async function getStandings() {
     ])
       dispatch({
         type: 'GET_TIMB_STANDINGS',
-        payload: response[0]['data']['sta']['co'][1]['di'][0]['t'][4]['l10']
+        payload: response[0]['data']['sta']['co'][1]['di'][0]['t'][4]
       });
       // console.log(response[0]['data']['sta']['co'][1]['di'][0]['t'][4]);
       dispatch({
@@ -200,7 +205,7 @@ async function getAllTimeLeader() {
       type: 'GET_ALL_TIME_LEADER_IMG',
       payload: response[1]['data']['response']['result'][0]['listImage']['landscape']
     });
-    // console.log(response);
+    // console.log(response[0]['data']['atl']['tot']['pl'][17]);
   } catch (err) {
     dispatch({
       type: 'FETCH_ERROR',
@@ -210,7 +215,7 @@ async function getAllTimeLeader() {
 }
 
   useEffect(() => {
-    getPlayerAverages();
+    getPlayerInfo();
     getTeamLeaders();
     getStandings();
     getAllTimeLeader();

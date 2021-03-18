@@ -10,15 +10,6 @@ export const Quiz = ({ setTimeLeft, timeLeft }) => {
   const { questions, currentQuestion, currentAnswer, answers, showResults, players, teamPointsLeader, teamPointsLeaderImg, topFourPointsPlayers, showInfo, standings, teamImg, allTimeLeader, allTimeLeaderImg, teamAssistsLeader, teamAssistsLeaderImg, error } = state;
   const question = questions[currentQuestion];
 
-  // highest point players
-  useEffect(() => {
-    const playerAveragePoints = players?.map(player => ({ name: player.fn + ' ' + player.ln, pts: player.avg.pts }));
-    const sortedPlayersByPoints = playerAveragePoints.sort((a, b) => b.pts - a.pts);
-    const topFourPoints = sortedPlayersByPoints.slice(0, 4);
-
-    dispatch({ type: 'SET_TOP_FOUR_POINTS_PLAYERS', topFourPointsPlayers: topFourPoints });
-  }, [dispatch, players])
-
   let totalPoints = 0;
   // check final answer
   const showResultScore = (question, answer) => {
@@ -77,7 +68,7 @@ export const Quiz = ({ setTimeLeft, timeLeft }) => {
       setTimeout(() => {
         dispatch({type: 'SET_SHOW_INFO', showInfo: false });
         setTimeLeft(10);
-      }, 5000)
+      }, 2000)
     } 
     if (currentQuestion + 1 < questions.length) {
       dispatch({
@@ -93,7 +84,7 @@ if (showInfo && currentQuestion === 1) {
   return (
     <div className='info-container'>
       <motion.div 
-        className='text-container'        
+        className='text-container'
         initial='out'
         animate='in'
         exit='out'
@@ -101,7 +92,7 @@ if (showInfo && currentQuestion === 1) {
         transition={imgTransition} 
       >
         <h1>Did you know...</h1>
-        <h2>{teamPointsLeader.fn} {teamPointsLeader.ln} currently averages {topFourPointsPlayers[0]['pts']} points per game!</h2>
+        <h2>{teamPointsLeader.name} currently averages {teamPointsLeader.points} points per game!</h2>
       </motion.div>
       <motion.img               
         initial='out'
@@ -110,7 +101,7 @@ if (showInfo && currentQuestion === 1) {
         variants={imgVariants}
         transition={imgTransition} 
         src={teamPointsLeaderImg} 
-        alt={`${teamPointsLeader.fn} ${teamPointsLeader.ln}`} />
+        alt={`${teamPointsLeader.name}`} />
     </div>
   )
 }
@@ -151,7 +142,7 @@ else if (showInfo && currentQuestion === 3) {
         transition={imgTransition} 
       >      
         <h1>Did you know...</h1>
-        <h2>{allTimeLeader.fn} {allTimeLeader.ln} is ranked in the top 20 all-time players for his {allTimeLeader.gp} career steals!</h2>
+        <h2>{allTimeLeader.name} is ranked in the top 20 all-time players for his {allTimeLeader.steals} career steals!</h2>
       </motion.div>
       <motion.img               
         initial='out'
@@ -166,17 +157,17 @@ else if (showInfo && currentQuestion === 3) {
 }
 
 else if (showInfo && currentQuestion === 4) {
-  if (teamAssistsLeader.pos === 'G') {
-    teamAssistsLeader.pos = 'Guard'
+  if (teamAssistsLeader.position === 'G') {
+    teamAssistsLeader.position = 'Guard'
   } 
-  if (teamAssistsLeader.pos === 'G-F') {
-    teamAssistsLeader.pos = 'Forward-Guard'
+  if (teamAssistsLeader.position === 'G-F') {
+    teamAssistsLeader.position = 'Forward-Guard'
   } 
-  if (teamAssistsLeader.pos === 'C') {
-    teamAssistsLeader.pos = 'Center'
+  if (teamAssistsLeader.position === 'C') {
+    teamAssistsLeader.position = 'Center'
   } 
-  if (teamAssistsLeader.pos === 'C-F') {
-    teamAssistsLeader.pos = 'Forward-Center'
+  if (teamAssistsLeader.position === 'C-F') {
+    teamAssistsLeader.position = 'Forward-Center'
   } 
   return (
     <div className='info-container'>
@@ -189,7 +180,7 @@ else if (showInfo && currentQuestion === 4) {
         transition={imgTransition} 
       > 
         <h1>Did you know...</h1>
-        <h2>{teamAssistsLeader.fn} {teamAssistsLeader.ln} averages {teamAssistsLeader.val} assists per game in his position as a Timberwolves {teamAssistsLeader.pos}!</h2>
+        <h2>{teamAssistsLeader.name} averages {teamAssistsLeader.assists} assists per game in his position as a Timberwolves {teamAssistsLeader.position}!</h2>
       </motion.div>
       <motion.img               
         initial='out'
@@ -198,7 +189,7 @@ else if (showInfo && currentQuestion === 4) {
         variants={imgVariants}
         transition={imgTransition} 
         src={teamAssistsLeaderImg} 
-        alt={`${teamAssistsLeader.fn} ${teamAssistsLeader.ln}`} />
+        alt={`${teamAssistsLeader}`} />
     </div>
   )
 }

@@ -9,10 +9,10 @@ export const Options = () => {
   
   return (
     <>
-      <Option letter='a' answer={question.answer_a} selected={currentAnswer === 'a'} dispatch={dispatch} />
-      <Option letter='b' answer={question.answer_b} selected={currentAnswer === 'b'} dispatch={dispatch} />
-      <Option letter='c' answer={question.answer_c} selected={currentAnswer === 'c'} dispatch={dispatch} />
-      <Option letter='d' answer={question.answer_d} selected={currentAnswer === 'd'} dispatch={dispatch} />
+      <Option letter='a' answer={question.answer_a} selected={currentAnswer === question.answer_a} dispatch={dispatch} />
+      <Option letter='b' answer={question.answer_b} selected={currentAnswer === question.answer_b} dispatch={dispatch} />
+      <Option letter='c' answer={question.answer_c} selected={currentAnswer === question.answer_c} dispatch={dispatch} />
+      <Option letter='d' answer={question.answer_d} selected={currentAnswer === question.answer_d} dispatch={dispatch} />
     </>
   );
 };

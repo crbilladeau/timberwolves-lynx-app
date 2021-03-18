@@ -1,10 +1,13 @@
-  
+import { update } from 'immutability-helper';
+let index = 0;
 export default (state, action) => {
   switch (action.type) {
-    case 'GET_PLAYERS':
+    case 'GET_EDWARDS_INFO':
       return {
         ...state,
-        players: action.payload
+        questions: state.questions.map(
+          (question, i) => i === 4 ? {...question, answer_c: action.payload, correct_answer: action.payload} : question
+      ),
       }
     case 'SET_TOP_FOUR_POINTS_PLAYERS':
       return {
@@ -12,15 +15,31 @@ export default (state, action) => {
         topFourPointsPlayers: action.topFourPointsPlayers
       }
     case 'GET_TEAM_POINTS_LEADER':
-      return {
-        ...state,
-        teamPointsLeader: action.payload
-      }
+      return { 
+        ...state, 
+        questions: state.questions.map(
+            (question, i) => i === 0 ? {...question, answer_d: `${action.payload.fn} ${action.payload.ln}`, correct_answer: `${action.payload.fn} ${action.payload.ln}`} : question
+        ),
+        teamPointsLeader: {
+          ...state.teamPointsLeader,
+          name: `${action.payload.fn} ${action.payload.ln}`,
+          points: action.payload.val,
+          position: action.payload.pos
+        }
+     }
     case 'GET_TEAM_ASSISTS_LEADER':
-      return {
-        ...state,
-        teamAssistsLeader: action.payload
-      }
+      return { 
+        ...state, 
+        questions: state.questions.map(
+            (question, i) => i === 3 ? {...question, answer_a: `${action.payload.fn} ${action.payload.ln}`, correct_answer: `${action.payload.fn} ${action.payload.ln}`} : question
+        ),
+        teamAssistsLeader: {
+          ...state.teamAssistsLeader,
+          name: `${action.payload.fn} ${action.payload.ln}`,
+          assists: action.payload.val,
+          position: action.payload.pos
+        }
+     }
     case 'GET_TEAM_POINTS_LEADER_IMG':
       return {
         ...state,
@@ -34,7 +53,10 @@ export default (state, action) => {
     case 'GET_TIMB_STANDINGS':
       return {
         ...state,
-        standings: action.payload
+          questions: state.questions.map(
+              (question, i) => i === 1 ? {...question, answer_b: `${action.payload.w} - ${action.payload.l}`, correct_answer: `${action.payload.w} - ${action.payload.l}`} : question
+          ),
+        standings: `${action.payload.w} - ${action.payload.l}`
       }
     case 'GET_TEAM_IMG':
       return {
@@ -44,7 +66,14 @@ export default (state, action) => {
     case 'GET_ALL_TIME_LEADER':
       return {
         ...state,
-        allTimeLeader: action.payload,
+        questions: state.questions.map(
+          (question, i) => i === 2 ? {...question, answer_a: `${action.payload.fn} ${action.payload.ln}`, correct_answer: `${action.payload.fn} ${action.payload.ln}`} : question
+      ),
+      allTimeLeader: {
+        ...state.allTimeLeader,
+        name: `${action.payload.fn} ${action.payload.ln}`,
+        steals: action.payload.stl
+      },
         loading: false
       }
     case 'GET_ALL_TIME_LEADER_IMG':

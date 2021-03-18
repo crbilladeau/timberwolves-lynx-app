@@ -13,7 +13,7 @@
     A quiz application made with React and the NBA mobile feeds and Content APIs. Deployed to Google Firebase.
     <br />
     <br />
-     <img src="https://github.com/crbilladeau/portfolio/blob/master/src/assets/images/watcher.png?raw=true" alt="Watcher Screenshot" width="1000">
+     <img src="https://github.com/crbilladeau/timberwolves-lynx-app/blob/main/src/images/screenshot.png?raw=true" alt="Timberwolves Trivia Screenshot" width="1000">
     <br />
   </p>
   <h2 align="center"><a href="https://timberwolves-trivia.web.app/">View Demo</a></h2>
@@ -55,8 +55,6 @@
 
 <div align="center">
    <div style="display: flex; align-items: flex-start;">
-     <img src="https://github.com/crbilladeau/portfolio/blob/master/src/assets/images/watcher-mobile1.png?raw=true" alt="Watcher Mobile Screenshot" width="400">
-     <img src="https://github.com/crbilladeau/portfolio/blob/master/src/assets/images/watcher-mobile2.png?raw=true" alt="Watcher Mobile Screenshot" width="400">
   </div>
 </div>
 

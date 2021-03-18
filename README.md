@@ -69,8 +69,8 @@ Timberwolves Trivia is a trivia/quiz application created with **React** and depl
 * [React](https://reactjs.org/)
 * [Firebase](https://firebase.google.com/)
 * [axios](https://github.com/axios/axios)
-* [NBA Mobile Feed](https://www.nba.com/resources/static/team/v2/timberwolves/NBA%20Mobile% 20Stat s%20Feed%20-%20v2016.pdf)
-* [NBA Content API](https://www.nba.com/resources/static/team/v2/timberwolves/ NBA-589949-260221-1545.pdf)
+* [NBA Mobile Feed](https://www.nba.com/resources/static/team/v2/timberwolves/NBA%20Mobile%20Stats%20Feed%20-%20v2016.pdf)
+* [NBA Content API](https://www.nba.com/resources/static/team/v2/timberwolves/NBA-589949-260221-1545.pdf)
 
 
 
@@ -112,7 +112,7 @@ This is an example of how to list things you need to use the software and how to
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@crbilladeau](https://twitter.com/crbilladeau) - charlie.billadeau@gmail.com
+Charlie Billadeau - [@crbilladeau](https://twitter.com/crbilladeau) - charlie.billadeau@gmail.com
 
 Project Link: [https://github.com/crbilladeau/timberwolves-lynx-app](https://github.com/crbilladeau/timberwolves-lynx-app)
 
